@@ -1,0 +1,16 @@
+.imagem2{
+    background-image:  url('https://wallpaperboat.com/wp-content/uploads/2020/05/18/42254/vaporwave-07.jpg') ;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.textos2{
+    font-weight: bold !important;
+    
+}
+
+.btnCancelar{
+    margin-right: 20px !important;
+}

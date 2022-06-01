@@ -1,0 +1,23 @@
+.caixa{
+    background-image: url('https://free4kwallpapers.com/uploads/originals/2020/06/11/starry-night-sky-wallpaper.jpg') !important;
+    color: white !important;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    width: 1080px;
+}
+
+.titulo{
+   color: white !important;
+   font-weight: bold !important;
+}
+
+.botao{
+    border-color: white !important;
+    background-image: url('https://www.pixel4k.com/wp-content/uploads/2019/11/terrain-vaporwave_1574940756-2048x1152.jpg') !important;
+    color: white !important;
+}
+
+.postagens{
+    background-color: white;
+}
