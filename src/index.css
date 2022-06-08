@@ -19,3 +19,11 @@ code {
   font-family: "Roboto";
   color: rgb(205, 212, 218) !important;
 }
+
+.MuiFormLabel-root {
+  color: #FFFFFF !important; 
+}
+
+.MuiInputBase-input{
+  color: white !important;
+}

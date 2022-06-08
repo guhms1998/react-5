@@ -14,3 +14,15 @@
 .text-decorator-none{
     text-decoration: none;
 }
+
+.test{
+    color: white !important;
+}
+
+.MuiFormLabel-root {
+    color: #FFFFFF !important; 
+}
+
+.MuiInputBase-input{
+    color: white !important;
+}
