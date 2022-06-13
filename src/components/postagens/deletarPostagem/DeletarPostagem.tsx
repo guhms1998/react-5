@@ -1,26 +1,34 @@
+import { Box, Button, Card, CardActions, CardContent, Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
-import { Box, Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
-
+import { toast } from 'react-toastify';
 import Postagem from '../../../models/Postagem';
 import { buscaId, deleteId } from '../../../services/Service';
-
+import { TokenState } from '../../../store/tokens/tokensReducer';
 import './DeletarPostagem.css';
 
 function DeletarPostagem() {
 
     let history = useNavigate();
-
     const { id } = useParams<{ id: string }>();
-
-    const [token, setToken] = useLocalStorage('token');
-
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+      );
     const [post, setPosts] = useState<Postagem>()
 
     useEffect(() => {
-        if (token === "") {
-            alert("Você precisa estar logado")
+        if (token == "") {
+            toast.error('Você precisa estar logado!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark"
+              });
             history("/login")
 
         }
@@ -40,19 +48,25 @@ function DeletarPostagem() {
         })
     }
 
-    async function sim() {
+    function sim() {
         history('/posts')
+        deleteId(`/postagens/${id}`, {
+            headers: {
+                'Authorization': token
+            }
+        });
 
-        try {
-            await deleteId(`/postagens/${id}`, {
-                headers: {
-                    'Authorization': token
-                }
-            });
-            alert('Postagem deletada com sucesso');
-        } catch (error) {
-            alert('Erro ao deletar');
-        }
+        toast.success('Postagem deletada com sucesso !', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark"
+          });
+        // alert('Postagem deletada com sucesso');
     }
 
     function nao() {
@@ -69,7 +83,7 @@ function DeletarPostagem() {
                                 Deseja deletar a Postagem:
                             </Typography>
                             <Typography color="textSecondary" >
-                                { post?.titulo }
+                                {post?.titulo}
                             </Typography>
                         </Box>
 
